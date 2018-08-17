@@ -24,6 +24,3 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
-
-# Hide database.yml
-/config/database.yml 

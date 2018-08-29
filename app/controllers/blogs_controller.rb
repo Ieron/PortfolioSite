@@ -1,5 +1,5 @@
 class BlogsController < ApplicationController
-  before_action :set_blog, only: [:show, :edit, :update, :destroy]
+  before_action :set_blog, only: [:show, :edit, :update, :destroy, :status_toggle]
 
   # GET /blogs
   # removed GET /blogs.json
@@ -55,6 +55,16 @@ class BlogsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to blogs_url, notice: 'Post was successfully removed.' }
     end
+  end
+
+  def status_toggle
+    if @blog.draft?
+      @blog.published!
+    elsif @blog.published?
+      @blog.draft!
+    end
+
+    redirect_to blogs_url, notice: 'Post status updated.'
   end
 
   private

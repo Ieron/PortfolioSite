@@ -5,11 +5,14 @@ class BlogsController < ApplicationController
   # removed GET /blogs.json
   def index
     @blogs = Blog.all
+    @page_title = "Blog Posts"
   end
 
   # GET /blogs/1
   # removed GET /blogs/1.json
   def show
+    @page_title = @blog.title
+    @seo_keywords = @blog.body
   end
 
   # GET /blogs/new
